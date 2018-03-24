@@ -12,7 +12,7 @@ class Main extends Component {
   state = {
     arr: ['I need help', 'I want to report'],
     prevArr: [''],
-    chatMsgs: ['Please describe your situation']
+    chatMsgs: ['We suggest this route of escape.']
   }
 
   updateResponses = (arr, log) => {
@@ -21,7 +21,7 @@ class Main extends Component {
     this.setState({
       arr: arr,
       prevArr: prevArr,
-      chatMsgs: msgs
+      // chatMsgs: msgs
     })
 
    
@@ -40,19 +40,26 @@ class Main extends Component {
     const clickHandler = (msg) => {
       switch (msg) {
         case 'I need help':
-          this.updateResponses(['I am injured', 'I am a hostage', 'Sausage', 'Hellu', 'I`m a kid', '＜'], 'I need help');
+          this.updateResponses(['＜', 'I am injured', 'I am a hostage', ], 'I need help');
           break
         case 'I am injured':
-          this.updateResponses(['I was shot', 'I have minor damages', '＜'], 'I am injured')
+          this.updateResponses(['＜', 'I was shot', 'I have minor damages'], 'I am injured')
           break
+        case 'I was shot':
+          this.updateResponses(['＜'], 'Hang tight. The dispatcher will contact you shortly.')
+          this.setState({ chatMsgs: ['Hang tight. The dispatcher will contact you shortly.'] })
+          break;
         case '⬅︎':
           this.setState({ arr: this.state.prevArr })
           break
         case 'I want to report':
-          this.updateResponses(['I am a sausage', 'I am dead huhu'], 'I am injured')
+          this.updateResponses(['＜', 'Confirm', 'Edit'], 'I am injured')
+          this.setState({ chatMsgs: ['Please confirm your information.', 'Name: Jake Possert', 'Location: 3901 S Las Vegas Blvd'] })
           break
-        case 'I was shot':
-          this.updateResponses(['＜'], 'Hang tight. The dispatcher will contact you shortly.')
+        case 'Confirm':
+          this.updateResponses(['＜'], 'I am injured')
+          this.setState({ chatMsgs: ['Please describe what you observe.'] })
+          break
       }
     }
 
@@ -80,7 +87,7 @@ class Main extends Component {
         <p>Today, 8:51pm − Now</p>
 
         <div className='Map'>
-          <iframe id='mappy' src='https://codepen.io/anon/pen/dmzQLz?editors=1000' />
+          <iframe id='mappy' src='https://codepen.io/Munchic/pen/WzELXN?editors=1000' />
         </div>
         <Chat messages={this.state.chatMsgs} />
         

@@ -18,15 +18,19 @@
 }
 
 .Map {
+  position: relative;
   width: inherit;
   overflow: hidden;
   height: 50vh;
+  border-radius: 0.2cm;
 }
 
 #mappy {
-  width: inherit;
-  height: inherit;
+  width: 90%;
+  margin-left: 5%;
+  height: 110vh;
+  position: absolute;
+  top: -56vh;
+  left: 0;
   border-width: 0; 
-
-  margin-bottom: 20vh;
 }
