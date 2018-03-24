@@ -58,9 +58,15 @@ class Main extends Component {
           this.setState({ chatMsgs: ['Please confirm your information.', 'Name: Jake Possert', 'Location: 3901 S Las Vegas Blvd'] })
           break
         case 'Confirm':
-          this.updateResponses(['＜'], 'I am injured')
+          this.updateResponses(['＜', 'Send'], 'I am injured')
           this.setState({ chatMsgs: ['Please describe what you observe.'], showInput: true })
           break
+        case 'Send':
+          this.updateResponses([], 'I am injured')
+          this.setState({ chatMsgs: ['Thank you for your input.'], showInput: false })
+          break
+        case '＜':
+        this.updateResponses(['I need help', 'I want to report'], 'I am injured')
       }
     }
 
