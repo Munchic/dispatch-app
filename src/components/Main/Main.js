@@ -12,7 +12,8 @@ class Main extends Component {
   state = {
     arr: ['I need help', 'I want to report'],
     prevArr: [''],
-    chatMsgs: ['We suggest this route of escape.']
+    chatMsgs: ['We suggest this route of escape.', '- Remeber to go in the direction opposite to the sound of the gun'],
+    showInput: false,
   }
 
   updateResponses = (arr, log) => {
@@ -47,7 +48,7 @@ class Main extends Component {
           break
         case 'I was shot':
           this.updateResponses(['＜'], 'Hang tight. The dispatcher will contact you shortly.')
-          this.setState({ chatMsgs: ['Hang tight. The dispatcher will contact you shortly.'] })
+          this.setState({ chatMsgs: ['Hang tight. The dispatcher will contact you shortly.', '- Meanwhile, do not attempt to remove bullet', '- Apply direct pressure against the wound to reduce bleeding'] })
           break;
         case '⬅︎':
           this.setState({ arr: this.state.prevArr })
@@ -58,7 +59,7 @@ class Main extends Component {
           break
         case 'Confirm':
           this.updateResponses(['＜'], 'I am injured')
-          this.setState({ chatMsgs: ['Please describe what you observe.'] })
+          this.setState({ chatMsgs: ['Please describe what you observe.'], showInput: true })
           break
       }
     }
@@ -83,13 +84,15 @@ class Main extends Component {
 
     return (
       <div className='Main'>
-        <h1>Shooting in Las Vegas</h1>
-        <p>Today, 8:51pm − Now</p>
+        <h3>Shooting near Mandalay Bay</h3>
+        <p id='active' style={{color:'red', fontWeight: 'bold'}}>Active situation - evacuate immediately</p>
 
         <div className='Map'>
           <iframe id='mappy' src='https://codepen.io/Munchic/pen/WzELXN?editors=1000' />
         </div>
         <Chat messages={this.state.chatMsgs} />
+
+        { this.state.showInput ? <div><input id='inp'></input> <p>You can also speak.</p></div> : null }
         
         <div className="RespSuggest">
           {this.state.arr.map(msg => 
