@@ -16,3 +16,17 @@
   margin-bottom: 0vh;
   font-weight: 400;
 }
+
+.Map {
+  width: inherit;
+  overflow: hidden;
+  height: 50vh;
+}
+
+#mappy {
+  width: inherit;
+  height: inherit;
+  border-width: 0; 
+
+  margin-bottom: 20vh;
+}

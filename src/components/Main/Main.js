@@ -27,8 +27,16 @@ class Main extends Component {
    
   }
 
-  render() {
+  componentDidMount () {
+    const script = document.createElement("script");
 
+    script.src = "https://js.arcgis.com/4.6/";
+    script.async = true;
+
+    document.body.appendChild(script);
+}
+
+  render() {
     const clickHandler = (msg) => {
       switch (msg) {
         case 'I need help':
@@ -71,6 +79,9 @@ class Main extends Component {
         <h1>Shooting in Las Vegas</h1>
         <p>Today, 8:51pm − Now</p>
 
+        <div className='Map'>
+          <iframe id='mappy' src='https://codepen.io/anon/pen/dmzQLz?editors=1000' />
+        </div>
         <Chat messages={this.state.chatMsgs} />
         
         <div className="RespSuggest">
